@@ -20,6 +20,8 @@ class ProfilePageActivity : MvpAppCompatActivity(), ProfilePageInterface {
     lateinit var presenter: ProfilePagePresenter
     lateinit var profileImageView: ImageView
     lateinit var profileNameView: TextView
+    lateinit var profileType: TextView
+    lateinit var userEmail: String
 
     private val GALERY_REQUEST = 1
 
@@ -29,11 +31,14 @@ class ProfilePageActivity : MvpAppCompatActivity(), ProfilePageInterface {
         setContentView(R.layout.activity_profile)
 
         profileNameView = findViewById(R.id.nameTextView)
+        profileType = findViewById(R.id.profileType)
 
         val user = intent.getParcelableExtra<User>(USER)
         if (user != null){
             val userName = user.name
             profileNameView.text = userName
+            userEmail = user.email
+            profileType.text = user.type
         }
         profileImageView = findViewById(R.id.profileImage)
         profileImageView.setOnClickListener {
@@ -50,7 +55,9 @@ class ProfilePageActivity : MvpAppCompatActivity(), ProfilePageInterface {
                 if (data != null){
                     val selectedImage = data.data
                     if (selectedImage != null) {
-                        presenter.dbPullImage(selectedImage)
+                        profileImageView.setImageURI(selectedImage)
+
+                        presenter.dbPullImage(profileImageView.drawable, userEmail)
                     }
                 }
             }
@@ -58,9 +65,7 @@ class ProfilePageActivity : MvpAppCompatActivity(), ProfilePageInterface {
     }
 
     override fun setProfileImage(file: Uri) {
-        val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, file)
-        profileImageView.setImageBitmap(bitmap)
-
+        profileImageView.setImageURI(file)
     }
 
     override fun message(msg: String) {

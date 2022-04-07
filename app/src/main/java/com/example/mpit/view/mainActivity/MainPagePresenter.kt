@@ -1,5 +1,6 @@
 package com.example.mpit.view.mainActivity
 
+import com.example.mpit.R
 import com.example.mpit.model.User
 import com.example.mpit.view.profileActivity.ProfilePageActivity
 import com.firebase.ui.auth.AuthUI
@@ -39,7 +40,7 @@ class MainPagePresenter : MvpPresenter<MainPageInterface>() {
             val mail = loggedUser.email
             val name = loggedUser.displayName
             if (mail != null && name != null){
-                viewState.launchProfile(ProfilePageActivity::class.java, User(mail, name)
+                viewState.launchProfile(ProfilePageActivity::class.java, User(mail, name, "Волонтер")
                 )
             }
         }
@@ -50,6 +51,7 @@ class MainPagePresenter : MvpPresenter<MainPageInterface>() {
         val signInIntent = AuthUI.getInstance()
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
+            .setLogo(R.drawable.logo)
             .build()
         viewState.launchUserLogin(signInIntent)
     }
