@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "972640372881",
+    "project_id": "mpitdatabase",
+    "storage_bucket": "mpitdatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972640372881:android:6a59488be507b1e5739730",
+        "android_client_info": {
+          "package_name": "com.example.mpit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "972640372881-kv7cv715i8b7k55st94tm4gvalitvrh4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi1zo48704PB-V5O_c5hsA2s01HdStdCQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "972640372881-kv7cv715i8b7k55st94tm4gvalitvrh4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
