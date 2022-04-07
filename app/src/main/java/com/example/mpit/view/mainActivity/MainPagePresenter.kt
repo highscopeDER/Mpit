@@ -1,17 +1,12 @@
 package com.example.mpit.view.mainActivity
 
-import android.content.Intent
-import android.util.Log
-import com.example.mpit.model.FirebaseUsers
 import com.example.mpit.model.User
 import com.example.mpit.view.profileActivity.ProfilePageActivity
 import com.firebase.ui.auth.AuthUI
-import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import moxy.InjectViewState
 import moxy.MvpPresenter
-import kotlin.coroutines.coroutineContext
 
 @InjectViewState
 class MainPagePresenter : MvpPresenter<MainPageInterface>() {
@@ -41,7 +36,12 @@ class MainPagePresenter : MvpPresenter<MainPageInterface>() {
     fun openProfilePage(){
         val loggedUser = getCurrentUser()
         if (loggedUser != null){
-            viewState.launchProfile(ProfilePageActivity::class.java, loggedUser)
+            val mail = loggedUser.email
+            val name = loggedUser.displayName
+            if (mail != null && name != null){
+                viewState.launchProfile(ProfilePageActivity::class.java, User(mail, name)
+                )
+            }
         }
     }
 
@@ -53,5 +53,4 @@ class MainPagePresenter : MvpPresenter<MainPageInterface>() {
             .build()
         viewState.launchUserLogin(signInIntent)
     }
-
 }

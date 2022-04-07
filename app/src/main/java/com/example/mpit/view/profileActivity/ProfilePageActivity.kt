@@ -60,6 +60,7 @@ class ProfilePageActivity : MvpAppCompatActivity(), ProfilePageInterface {
     override fun setProfileImage(file: Uri) {
         val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, file)
         profileImageView.setImageBitmap(bitmap)
+
     }
 
     override fun message(msg: String) {

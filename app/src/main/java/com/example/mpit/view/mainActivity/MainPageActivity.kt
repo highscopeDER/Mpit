@@ -37,10 +37,6 @@ class MainPageActivity : MvpAppCompatActivity(), MainPageInterface {
             val user = FirebaseAuth.getInstance().currentUser
             if (user != null) {
                 presenter.openProfilePage()
-                Toast.makeText(
-                    this,
-                    "name: ${user.displayName}, mail: ${user.email}",
-                    Toast.LENGTH_LONG).show()
             }
         } else {
             Toast.makeText(
