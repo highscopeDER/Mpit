@@ -52,6 +52,7 @@ dependencies {
     //moxy
     implementation "com.github.moxy-community:moxy:2.2.2"
     implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
+    implementation 'com.google.firebase:firebase-storage-ktx:20.0.1'
     kapt "com.github.moxy-community:moxy-compiler:2.2.2"
     annotationProcessor "com.github.moxy-community:moxy-compiler:2.2.2"
     implementation "com.github.moxy-community:moxy-androidx:2.2.2"
