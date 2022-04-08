@@ -1,4 +1,4 @@
-package com.example.mpit.view.mainActivity
+package com.example.mpit.view.mainActivity.activity
 
 import android.content.Intent
 import android.os.Parcelable

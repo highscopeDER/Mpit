@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mpit">
         <activity
-            android:name=".view.mainActivity.MainPageActivity"
+            android:name=".view.mainActivity.activity.MainPageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,13 +23,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.loginActivity.LoginPageActivity"
-            android:exported="true"
-            />
-        <activity
             android:exported="false"
             android:name=".view.profileActivity.ProfilePageActivity"
-            android:parentActivityName=".view.mainActivity.MainPageActivity">
+            android:parentActivityName=".view.mainActivity.activity.MainPageActivity">
             <intent-filter>
                 <action android:name="com.example.chasie.myapp6.SecondActivity"/>
                 <category android:name="android.intent.category.DEFAULT"/>

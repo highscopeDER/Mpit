@@ -3,13 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v23/volunteer_page_volunteer_recycler_view_bg.xml" value="0.3515" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3445" />
+        <entry key="app/src/main/res/drawable/default_button_shape.xml" value="0.3515" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.3445" />
         <entry key="app/src/main/res/drawable/ic_logo.xml" value="0.3445" />
         <entry key="app/src/main/res/drawable/profile_image_tint.xml" value="0.3445" />
+        <entry key="app/src/main/res/drawable/profile_pic.xml" value="0.3515" />
+        <entry key="app/src/main/res/drawable/volunteer_page_volunteer_recycler_view_bg.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_user_main_page.xml" value="0.35" />
+        <entry key="app/src/main/res/layout/fragment_volunteer_main_page.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/help_ask_adapter_item_view.xml" value="0.6460176991150443" />
+        <entry key="app/src/main/res/layout/volunteer_top_adapter_item_view.xml" value="0.33" />
       </map>
     </option>
   </component>

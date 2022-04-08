@@ -1,20 +1,20 @@
-package com.example.mpit.view.mainActivity
+package com.example.mpit.view.mainActivity.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Parcel
 import android.os.Parcelable
 import android.util.Log
 import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainerView
+import androidx.fragment.app.FragmentManager
 import com.example.mpit.R
-import com.example.mpit.model.User
+import com.example.mpit.view.mainActivity.fragmentVolunteer.VolunteerMainPage
 import com.example.mpit.view.profileActivity.ProfilePageActivity
-import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
-import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
-import com.google.firebase.auth.FirebaseAuth
+import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseUser
 import moxy.MvpAppCompatActivity
 import moxy.presenter.InjectPresenter
@@ -25,19 +25,18 @@ class MainPageActivity : MvpAppCompatActivity(), MainPageInterface {
 
     @InjectPresenter
     lateinit var presenter: MainPagePresenter
-    lateinit var textView: TextView
-    lateinit var button: Button
+    lateinit var fragmentContainerView: FragmentContainerView
+    lateinit var fragmentManager: FragmentManager
+    lateinit var volunteerPage: VolunteerMainPage
     lateinit var profileButton: Button
+    lateinit var signOutButton: Button
+
 
     private val signInLauncher = registerForActivityResult(
         FirebaseAuthUIActivityResultContract()
     ) { res ->
-        val response = res.idpResponse
         if (res.resultCode == RESULT_OK) {
-            val user = FirebaseAuth.getInstance().currentUser
-            if (user != null) {
-                presenter.openProfilePage()
-            }
+            presenter.openProfilePage()
         } else {
             Toast.makeText(
                 this,
@@ -49,14 +48,20 @@ class MainPageActivity : MvpAppCompatActivity(), MainPageInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        textView = findViewById(R.id.textView)
-        button = findViewById(R.id.button)
-        button.setOnClickListener {
-            presenter.userSignOut()
+        fragmentContainerView = findViewById(R.id.fragmentContainer)
+        fragmentManager = supportFragmentManager
+        volunteerPage = VolunteerMainPage()
+        fragmentManager.beginTransaction().apply {
+            replace(fragmentContainerView.id, volunteerPage)
+            commit()
         }
-        profileButton = findViewById(R.id.profile)
+        profileButton = findViewById(R.id.profileButton)
         profileButton.setOnClickListener {
             presenter.openProfilePage()
+        }
+        signOutButton = findViewById(R.id.signOutButton)
+        signOutButton.setOnClickListener {
+            presenter.userSignOut()
         }
     }
 
@@ -65,7 +70,6 @@ class MainPageActivity : MvpAppCompatActivity(), MainPageInterface {
     }
 
     override fun updateUser(user: FirebaseUser) {
-        textView.text = user.displayName
         Log.v("TAG", "${user.email}, ${user.displayName}")
     }
 
